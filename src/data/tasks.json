@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "nombre": "Eduardo Rodriguez",
+    "titulo": "maestria",
+    "egreso": 2019,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 2,
+    "nombre": "Laura González",
+    "titulo": "licenciatura",
+    "egreso": 2022,
+    "empresa": "canada"
+  },
+  {
+    "id": 3,
+    "nombre": "Juan Pérez",
+    "titulo": "doctorado",
+    "egreso": 2017,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 4,
+    "nombre": "María Sánchez",
+    "titulo": "bachillerato",
+    "egreso": 2021,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 5,
+    "nombre": "Carlos Martínez",
+    "titulo": "maestria",
+    "egreso": 2020,
+    "empresa": "chile"
+  },
+  {
+    "id": 6,
+    "nombre": "Ana Hernández",
+    "titulo": "licenciatura",
+    "egreso": 2020,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 7,
+    "nombre": "Javier Vargas",
+    "titulo": "doctorado",
+    "egreso": 2019,
+    "empresa": "estados_unidos"
+  },
+  {
+    "id": 8,
+    "nombre": "Isabel Jiménez",
+    "titulo": "maestria",
+    "egreso": 2018,
+    "empresa": "estados_unidos"
+  },
+  {
+    "id": 9,
+    "nombre": "Luisa Torres",
+    "titulo": "bachillerato",
+    "egreso": 2022,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 10,
+    "nombre": "David López",
+    "titulo": "doctorado",
+    "egreso": 2017,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 11,
+    "nombre": "Sofía Pérez",
+    "titulo": "maestria",
+    "egreso": 2016,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 12,
+    "nombre": "Eduardo González",
+    "titulo": "licenciatura",
+    "egreso": 2021,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 13,
+    "nombre": "Miguel Martínez",
+    "titulo": "maestria",
+    "egreso": 2020,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 14,
+    "nombre": "Alejandra Sánchez",
+    "titulo": "licenciatura",
+    "egreso": 2019,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 15,
+    "nombre": "Joaquín Herrera",
+    "titulo": "doctorado",
+    "egreso": 2018,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 16,
+    "nombre": "Carmen Fernández",
+    "titulo": "maestria",
+    "egreso": 2021,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 17,
+    "nombre": "Manuel Ramírez",
+    "titulo": "licenciatura",
+    "egreso": 2017,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 18,
+    "nombre": "Lorena Rodríguez",
+    "titulo": "doctorado",
+    "egreso": 2020,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 19,
+    "nombre": "Andrés Díaz",
+    "titulo": "maestria",
+    "egreso": 2019,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 20,
+    "nombre": "Patricia Mora",
+    "titulo": "bachillerato",
+    "egreso": 2016,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 21,
+    "nombre": "Roberto Smith",
+    "titulo": "doctorado",
+    "egreso": 2022,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 22,
+    "nombre": "Valeria Castillo",
+    "titulo": "maestria",
+    "egreso": 2019,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 23,
+    "nombre": "Héctor Cordero",
+    "titulo": "licenciatura",
+    "egreso": 2017,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 24,
+    "nombre": "Adriana Morales",
+    "titulo": "maestria",
+    "egreso": 2021,
+    "empresa": "costa_rica"
+  },
+  {
+    "id": 25,
+    "nombre": "José Gonzales",
+    "titulo": "doctorado",
+    "egreso": 2018,
+    "empresa": "costa_rica"
+  }
+]
