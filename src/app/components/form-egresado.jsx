@@ -239,7 +239,7 @@ export function FormEgresado() {
                   htmlFor="trabaja"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                 >
-                  ¿Trabaja o ha trabajado en algún área de su carrera?
+                  ¿Trabaja actualmente?
                 </label>
               </div>
             </FormItem>
