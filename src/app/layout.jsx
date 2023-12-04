@@ -10,7 +10,7 @@ export const metadata = {
   description:
     "Sistema de Gestión de Egresados de la Universidad de Costa Rica",
 };
-
+export const dynamic = "force-dynamic";
 export default function RootLayout({ children }) {
   return (
     <html lang="es">

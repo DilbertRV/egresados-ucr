@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 // import { Sidebar } from "./components/sidebar";
 import { columns } from "@/app/components/table/columns";
 import { DataTable } from "@/app/components/table/data-table";
+import { Badge } from "@/app/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -18,7 +19,6 @@ import {
 } from "@/app/components/ui/tabs";
 import { getGraduate } from "@/utils/graduate-utils";
 import { Briefcase, GraduationCap, UserCheck } from "lucide-react";
-import { Badge } from "./components/ui/badge";
 
 export default async function Home() {
   const supabase = createServerComponentClient({ cookies });
@@ -34,7 +34,7 @@ export default async function Home() {
 
   return (
     <div className="bg-slate-50 flex flex-col items-center justify-center min-h-screen">
-      <div className="space-y-4 p-8 pt-6 min-w-full xl:pl-20 xl:pr-20">
+      <div className=" space-y-4 p-8 pt-6 min-w-full xl:pl-20 xl:pr-20">
         <div className="flex flex-col justify-between space-y-2">
           <span className="max-w-fit text-md  text-muted-foreground">
             Ciencias Económicas
