@@ -2,9 +2,8 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 // import { Sidebar } from "./components/sidebar";
-import { columns } from "@/app/components/columns";
-import { DataTable } from "@/app/components/data-table";
-import { CalendarDateRangePicker } from "@/app/components/date-range-picker";
+import { columns } from "@/app/components/table/columns";
+import { DataTable } from "@/app/components/table/data-table";
 import {
   Card,
   CardContent,
@@ -12,65 +11,41 @@ import {
   CardTitle,
 } from "@/app/components/ui/card";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/app/components/ui/dropdown-menu";
-import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/app/components/ui/tabs";
-import { taskSchema } from "@/data/schema";
-import { promises as fs } from "fs";
-import {
-  Briefcase,
-  FileText,
-  GraduationCap,
-  Sheet,
-  UserCheck,
-} from "lucide-react";
-import path from "path";
-import { z } from "zod";
-
-async function getTasks() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/data/tasks.json")
-  );
-
-  const tasks = JSON.parse(data.toString());
-
-  return z.array(taskSchema).parse(tasks);
-}
+import { getGraduate } from "@/utils/graduate-utils";
+import { Briefcase, GraduationCap, UserCheck } from "lucide-react";
+import { Badge } from "./components/ui/badge";
 
 export default async function Home() {
-  const tasks = await getTasks();
   const supabase = createServerComponentClient({ cookies });
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
+  const graduates = await getGraduate(supabase);
+
   if (!session) {
     redirect("/login");
   }
 
-  // Retuen an array of años from 1982 to 2023
-  const años = Array.from({ length: 41 }, (_, i) => 1982 + i);
-
-  const { data: usuario } = await supabase.from("usuario").select();
-
   return (
-    <div className="bg-slate-50 flex flex-col items-center justify-center">
-      <div className="flex-1 space-y-4 p-8 pt-6 min-w-full xl:pl-20 xl:pr-20">
-        <div className="flex flex-col md:flex-row items-center justify-between space-y-2">
-          <h2 className="text-3xl font-bold tracking-tight">
-            Dirección de empresas
-          </h2>
-          <div className="flex items-center space-x-2">
+    <div className="bg-slate-50 flex flex-col items-center justify-center min-h-screen">
+      <div className="space-y-4 p-8 pt-6 min-w-full xl:pl-20 xl:pr-20">
+        <div className="flex flex-col justify-between space-y-2">
+          <span className="max-w-fit text-md  text-muted-foreground">
+            Ciencias Económicas
+          </span>
+          <h1 className="text-3xl font-bold tracking-tight">
+            Dirección de Empresas
+          </h1>
+          <Badge className="max-w-fit" variant="secondary">
+            {"Bachillerato y Licenciatura"}
+          </Badge>
+          {/* <div className="flex items-center space-x-2">
             <CalendarDateRangePicker />
             <DropdownMenu>
               <DropdownMenuTrigger className="h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md">
@@ -91,7 +66,7 @@ export default async function Home() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          </div>
+          </div> */}
         </div>
         <Tabs defaultValue="overview" className="space-y-4">
           <TabsList>
@@ -160,8 +135,8 @@ export default async function Home() {
           </TabsContent>
         </Tabs>
       </div>
-      <div className="hidden h-full flex-1 flex-col space-y-8 w-full xl:pl-20 xl:pr-20 md:flex">
-        <DataTable data={tasks} columns={columns} />
+      <div className="hidden h-full flex-1 flex-col space-y-8 w-full xl:px-20 md:flex">
+        <DataTable data={graduates} columns={columns} />
       </div>
 
       {/* <div className="border-t">
