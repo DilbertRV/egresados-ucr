@@ -12,9 +12,13 @@ export async function middleware(req) {
   } = await supabase.auth.getSession();
 
   const redirect = () => {
-    const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = "/404";
-    return NextResponse.redirect(new URL(redirectUrl), req.url);
+    return NextResponse.next({
+      status: 404,
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    });
   };
 
   if (!session) {
