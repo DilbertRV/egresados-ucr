@@ -1,11 +1,6 @@
-"use client";
-
-import { Button } from "@/app/components/ui/button";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function NotFound() {
-  const router = useRouter();
-
   return (
     <main className="container flex min-h-screen flex-col items-center justify-center">
       <section className="lg:p-8">
@@ -17,13 +12,12 @@ export default function NotFound() {
             </p>
           </div>
           <div className="flex flex-col space-y-2 text-center">
-            <Button
-              variant="link"
-              onClick={() => router.push("/")}
+            <Link
+              href="/"
               className="text-sm text-primary text-blue-600 hover:text-primary-dark hover:underline"
             >
               Ir al sitio principal
-            </Button>
+            </Link>
           </div>
         </div>
       </section>
