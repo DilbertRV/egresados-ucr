@@ -1,19 +1,18 @@
-'use client'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-import {create} from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-
-const useAuthStore = create(persist(
-  (set) => ({
-    user: null,
-    setUser: (user) => set({ user }),
-    logout: () => set({ user: null }),
-  }),
-  {
-    name: 'auth',
-    skipHydration: true,
-    storage: createJSONStorage(() => sessionStorage),
-  }
-));
+const useAuthStore = create(
+  persist(
+    (set) => ({
+      user: null,
+      setUser: (user) => set({ user }),
+      logout: () => set({ user: null }),
+    }),
+    {
+      name: "auth",
+      skipHydration: true,
+    }
+  )
+);
 
 export default useAuthStore;
