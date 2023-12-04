@@ -1,7 +1,7 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { Toaster } from "@/app/components/ui/toaster";
-import { NavContainer } from "./components/nav-container";
+import { Inter } from "next/font/google";
+import { NavContainer } from "./components/navbar/nav-container";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +12,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html lang="es">
       <body className={`${inter.className} min-h-screen bg-background`}>
