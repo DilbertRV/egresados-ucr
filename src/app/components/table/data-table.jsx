@@ -1,11 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -14,7 +9,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
+import { useState } from "react";
 
 import {
   Table,
@@ -23,21 +19,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/app/components/ui/table"
+} from "@/app/components/ui/table";
 
-import { DataTablePagination } from "@/app/components/data-table-pagination"
-import { DataTableToolbar } from "@/app/components/data-table-toolbar"
+import { DataTablePagination } from "@/app/components/table/data-table-pagination";
+import { DataTableToolbar } from "@/app/components/table/data-table-toolbar";
 
-
-export function DataTable({
-  columns,
-  data,
-}) {
-  const [rowSelection, setRowSelection] = useState({})
-  const [columnVisibility, setColumnVisibility] =
-    useState({})
-  const [columnFilters, setColumnFilters] = useState([])
-  const [sorting, setSorting] = useState([])
+export function DataTable({ columns, data }) {
+  const [rowSelection, setRowSelection] = useState({});
+  const [columnVisibility, setColumnVisibility] = useState({});
+  const [columnFilters, setColumnFilters] = useState([]);
+  const [sorting, setSorting] = useState([]);
 
   const table = useReactTable({
     data,
@@ -59,11 +50,11 @@ export function DataTable({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-  })
+  });
 
   return (
     <div className="space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar graduates={data} table={table} />
       <div className="bg-white rounded-md border">
         <Table>
           <TableHeader>
@@ -79,7 +70,7 @@ export function DataTable({
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -116,5 +107,5 @@ export function DataTable({
       </div>
       <DataTablePagination table={table} />
     </div>
-  )
+  );
 }

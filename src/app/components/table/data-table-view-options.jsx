@@ -20,11 +20,42 @@ import {
   DropdownMenuSeparator,
 } from "@/app/components/ui/dropdown-menu";
 import { Separator } from "@/app/components/ui/separator";
+import egresadoStore from "@/store/egresadoStore";
 import { Settings2Icon, UserPlus } from "lucide-react";
+import { useState } from "react";
+import { ToastAction } from "../ui/toast";
+import { useToast } from "../ui/use-toast";
 
 export function DataTableViewOptions({ table }) {
-  const handleInteractOutSide = () => {
-    console.log("interact outside");
+  const store = egresadoStore();
+  const { toast } = useToast();
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    store.setHasInfo(false);
+    setOpen(!open);
+  };
+
+  const handleCloseDialog = () => {
+    if (store.hasInfo) {
+      toast({
+        variant: "warning",
+        title: "⚠️ ¿Estás seguro que desea cerrar el formulario?",
+        description:
+          "Aún no has guardado, si cierras el formulario se perderán los datos.",
+        action: (
+          <ToastAction
+            onClick={() => handleOpenDialog()}
+            className="hover:bg-secondary/30"
+            altText="Cerrar"
+          >
+            Salir
+          </ToastAction>
+        ),
+      });
+    } else {
+      setOpen(!open);
+    }
   };
 
   return (
@@ -64,12 +95,12 @@ export function DataTableViewOptions({ table }) {
         </DropdownMenuContent>
       </DropdownMenu>
       <Separator orientation="vertical" className="ml-4 h-8" />
-      <Dialog>
+      <Dialog open={open} onOpenChange={() => handleCloseDialog()}>
         <DialogTrigger className="flex items-center bg-primary rounded-md p-2 text-white text-sm ml-4 gap-2">
           <UserPlus size={18} />
           Agregar Egresado
         </DialogTrigger>
-        <DialogContent onInteractOutside={() => handleInteractOutSide()}>
+        <DialogContent>
           <DialogHeader>
             <DialogTitle className="text-xl font-bold">
               Agregar un nuevo egresado

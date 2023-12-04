@@ -1,10 +1,7 @@
-import * as React from "react"
-import { Check, PlusCircle } from "lucide-react"
-import { Column } from "@tanstack/react-table"
+import { Check, PlusCircle } from "lucide-react";
 
-import { cn } from "@/lib/utils"
-import { Badge } from "@/app/components/ui/badge"
-import { Button } from "@/app/components/ui/button"
+import { Badge } from "@/app/components/ui/badge";
+import { Button } from "@/app/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -13,21 +10,18 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/app/components/ui/command"
+} from "@/app/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/app/components/ui/popover"
-import { Separator } from "@/app/components/ui/separator"
+} from "@/app/components/ui/popover";
+import { Separator } from "@/app/components/ui/separator";
+import { cn } from "@/lib/utils";
 
-export function DataTableFacetedFilter({
-  column,
-  title,
-  options,
-}) {
-  const facets = column?.getFacetedUniqueValues()
-  const selectedValues = new Set(column?.getFilterValue())
+export function DataTableFacetedFilter({ column, title, options }) {
+  const facets = column?.getFacetedUniqueValues();
+  const selectedValues = new Set(column?.getFilterValue());
 
   return (
     <Popover>
@@ -50,7 +44,7 @@ export function DataTableFacetedFilter({
                     variant="secondary"
                     className="rounded-sm px-1 font-normal"
                   >
-                    {selectedValues.size} selected
+                    {selectedValues.size} seleccionados
                   </Badge>
                 ) : (
                   options
@@ -77,20 +71,20 @@ export function DataTableFacetedFilter({
             <CommandEmpty>No hay resultados.</CommandEmpty>
             <CommandGroup>
               {options.map((option) => {
-                const isSelected = selectedValues.has(option.value)
+                const isSelected = selectedValues.has(option.value);
                 return (
                   <CommandItem
                     key={option.value}
                     onSelect={() => {
                       if (isSelected) {
-                        selectedValues.delete(option.value)
+                        selectedValues.delete(option.value);
                       } else {
-                        selectedValues.add(option.value)
+                        selectedValues.add(option.value);
                       }
-                      const filterValues = Array.from(selectedValues)
+                      const filterValues = Array.from(selectedValues);
                       column?.setFilterValue(
                         filterValues.length ? filterValues : undefined
-                      )
+                      );
                     }}
                   >
                     <div
@@ -113,7 +107,7 @@ export function DataTableFacetedFilter({
                       </span>
                     )}
                   </CommandItem>
-                )
+                );
               })}
             </CommandGroup>
             {selectedValues.size > 0 && (
@@ -133,5 +127,5 @@ export function DataTableFacetedFilter({
         </Command>
       </PopoverContent>
     </Popover>
-  )
+  );
 }

@@ -1,7 +1,7 @@
-import { MainNav } from "@/app/components/main-nav";
+import { MainNav } from "@/app/components/navbar/main-nav";
+import { UserNav } from "@/app/components/navbar/user-nav";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import { UserNav } from "@/app/components/user-nav";
 
 export async function NavContainer() {
   const supabase = createServerComponentClient({ cookies });

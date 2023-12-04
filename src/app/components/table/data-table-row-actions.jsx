@@ -1,32 +1,18 @@
-"use client"
+"use client";
 
-import { MoreHorizontalIcon } from "lucide-react"
-import { Row } from "@tanstack/react-table"
+import { MoreHorizontalIcon } from "lucide-react";
 
-import { Button } from "@/app/components/ui/button"
+import { Button } from "@/app/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/app/components/ui/dropdown-menu"
+} from "@/app/components/ui/dropdown-menu";
 
-import { labels } from "../../data/data"
-import { taskSchema } from "../../data/schema"
-
-
-export function DataTableRowActions({
-  row,
-}) {
-  const task = taskSchema.parse(row.original)
-
+export function DataTableRowActions({ row }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,5 +35,5 @@ export function DataTableRowActions({
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

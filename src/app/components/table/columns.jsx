@@ -1,14 +1,11 @@
-"use client"
+"use client";
 
-import { ColumnDef } from "@tanstack/react-table"
+import { Badge } from "@/app/components/ui/badge";
+import { Checkbox } from "@/app/components/ui/checkbox";
 
-import { Badge } from "@/app/components/ui/badge"
-import { Checkbox } from "@/app/components/ui/checkbox"
-
-import { titles, egresos, empresas } from "../../data/data"
-import { taskSchema } from "../../data/schema"
-import { DataTableColumnHeader } from "@/app/components/data-table-column-header"
-import { DataTableRowActions } from "@/app/components/data-table-row-actions"
+import { DataTableColumnHeader } from "@/app/components/table/data-table-column-header";
+import { DataTableRowActions } from "@/app/components/table/data-table-row-actions";
+import { titles } from "@/data/data";
 
 export const columns = [
   {
@@ -33,13 +30,31 @@ export const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "titulo",
+    accessorKey: "id_titulo",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Titulo" />
     ),
-    cell: ({ row }) => <Badge variant="outline">{row.getValue("titulo")}</Badge>,
+    cell: ({ row }) => {
+      const title = titles.find(
+        (label) => label.value === row.original.id_titulo
+      );
+
+      return (
+        <span>
+          {title && (
+            <Badge variant="outline" className="">
+              {title.label}
+            </Badge>
+          )}
+        </span>
+      );
+    },
     enableHiding: false,
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
   },
+
   {
     accessorKey: "nombre",
     header: ({ column }) => (
@@ -55,51 +70,58 @@ export const columns = [
             {row.getValue("nombre")}
           </span>
         </div>
-      )
+      );
     },
   },
   {
-    accessorKey: "empresa",
+    accessorKey: "apellido",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Ubic. Empresa" />
+      <DataTableColumnHeader column={column} title="Apellido" />
     ),
     cell: ({ row }) => {
-      const empresa = empresas.find(
-        (label) => label.value === row.getValue("empresa")
-      )
-
-      if (!empresa) {
-        return null
-      }
-
       return (
-        <div className="flex w-[125px] items-center"> 
-          <span>{empresa.label}</span>
+        <div className="flex space-x-2">
+          <span className="max-w-[500px] truncate font-medium">
+            {row.getValue("apellido")}
+          </span>
         </div>
-      )
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      );
     },
   },
   {
-    accessorKey: "egreso",
+    accessorKey: "nombre_empresa",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Empresa" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="flex w-[125px] items-center">
+          <span>{row.getValue("nombre_empresa")}</span>
+        </div>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+  },
+  {
+    accessorKey: "ano_egreso",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Egreso" />
     ),
     cell: ({ row }) => {
       return (
-          <span className="max-w-[500px] truncate font-medium">
-            {row.getValue("egreso")}
-          </span>
-      )
+        <span className="max-w-[500px] truncate font-medium">
+          {row.getValue("ano_egreso")}
+        </span>
+      );
     },
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
     id: "actions",
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
-]
+];

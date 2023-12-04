@@ -20,8 +20,6 @@ export function MainNav() {
 
   const user = useAuthStore((state) => state.user);
 
-  console.log(user);
-
   return (
     <nav
       className={"mx-10 flex items-center space-x-4 px-2 lg:px-4 lg:space-x-6"}
@@ -40,6 +38,30 @@ export function MainNav() {
       </Link>
 
       <Menubar className="rounded-none border-b border-none text-primary-foreground">
+        <MenubarMenu>
+          <MenubarTrigger className="hover:bg-background hover:text-secondary-foreground">
+            Gestionar carrera
+          </MenubarTrigger>
+          <MenubarContent forceMount>
+            <MenubarItem inset>
+              <Link
+                href="/admin/accounts"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                Informática empresarial
+              </Link>
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem inset>
+              <Link
+                href="/admin/add-account"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              >
+                Dirección de empresas
+              </Link>
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
         {user?.rol == 1 ? (
           <MenubarMenu>
             <MenubarTrigger className="hover:bg-background hover:text-secondary-foreground">
@@ -66,30 +88,6 @@ export function MainNav() {
             </MenubarContent>
           </MenubarMenu>
         ) : null}
-        <MenubarMenu>
-          <MenubarTrigger className="hover:bg-background hover:text-secondary-foreground">
-            Gestionar carrera
-          </MenubarTrigger>
-          <MenubarContent forceMount>
-            <MenubarItem inset>
-              <Link
-                href="/admin/accounts"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Informática empresarial
-              </Link>
-            </MenubarItem>
-            <MenubarSeparator />
-            <MenubarItem inset>
-              <Link
-                href="/admin/add-account"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-              >
-                Dirección de empresas
-              </Link>
-            </MenubarItem>
-          </MenubarContent>
-        </MenubarMenu>
       </Menubar>
     </nav>
   );

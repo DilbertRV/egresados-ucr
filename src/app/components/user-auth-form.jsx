@@ -1,14 +1,6 @@
 "use client";
 
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "@/app/components/ui/button";
-import { Input } from "@/app/components/ui/input";
-import { Loader2 } from "lucide-react";
-import { object, string } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -16,9 +8,17 @@ import {
   FormItem,
   FormMessage,
 } from "@/app/components/ui/form";
+import { Input } from "@/app/components/ui/input";
 import { useToast } from "@/app/components/ui/use-toast";
 import useAuthStore from "@/store/userStore";
 import { getUser } from "@/utils/user-utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { object, string } from "zod";
 
 export function UserAuthForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -41,10 +41,12 @@ export function UserAuthForm() {
   });
 
   const getUserData = async () => {
-    const { data: {session} } = await supabase.auth.getSession();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
     const user = await getUser(supabase, session);
     setUser(user);
-  }
+  };
 
   async function onSubmit() {
     setIsLoading(true);
@@ -57,7 +59,7 @@ export function UserAuthForm() {
       if (error) {
         toast({
           variant: "warning",
-          title: "Por favor, intente de nuevo.",
+          title: "⚠️ Por favor, intente de nuevo.",
           description:
             "Verifique que el nombre de usuario y la contraseña sean correctos.",
         });
