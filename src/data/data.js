@@ -1,14 +1,3 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  CheckCircle2,
-  Circle,
-  XCircle,
-  FileQuestion,
-  Timer,
-} from "lucide-react"
-
 export const year_of_graduation = [
   {
     value: 2016,
@@ -46,19 +35,19 @@ export const year_of_graduation = [
 
 export const titles = [
   {
-    value: "maestria",
+    value: 3,
     label: "Maestría",
   },
   {
-    value: "licenciatura",
+    value: 2,
     label: "Licenciatura",
   },
   {
-    value: "bachillerato",
+    value: 1,
     label: "Bachillerato",
   },
   {
-    value: "doctorado",
+    value: 4,
     label: "Doctorado",
   },
 ];
@@ -159,4 +148,10 @@ export const egresos = [
     value: 2023,
     label: "2023",
   },
+];
+
+export const carreras = [
+  { id: 1, nombre: "Informática Empresarial" },
+  { id: 2, nombre: "Dirección de Empresas" },
+  { id: 3, nombre: "Ingeniería en Computación" },
 ];
