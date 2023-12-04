@@ -93,8 +93,6 @@ export function FormEgresado() {
   const { toast } = useToast();
   const store = egresadoStore();
 
-  console.log(selectedValues);
-
   const form = useForm({
     resolver: zodResolver(egresadoSchema),
     defaultValues: {
@@ -176,8 +174,6 @@ export function FormEgresado() {
         ])
         .some((value) => value != null && value != 0 && value !== "");
 
-      console.log(valuesWithInfo);
-
       if (valuesWithInfo) {
         toast({
           variant: "destructive",
@@ -215,8 +211,6 @@ export function FormEgresado() {
 
   const handleClickSubmit = async () => {
     // Verifica si se han realizado cambios en el formulario
-    console.log(form.getValues());
-
     if (!form.formState.isDirty) {
       toast({
         variant: "destructive",
@@ -229,13 +223,13 @@ export function FormEgresado() {
 
     const result = egresadoSchema.safeParse(form.formState.values);
 
-    console.log(
-      Object.keys(form.formState.errors)
-        .map((key) => {
-          return form.formState.errors[key].message;
-        })
-        .join(", ")
-    );
+    // console.log(
+    //   Object.keys(form.formState.errors)
+    //     .map((key) => {
+    //       return form.formState.errors[key].message;
+    //     })
+    //     .join(", ")
+    // );
 
     // Verifica si hay errores de validación
     if (!result.success) {
@@ -270,8 +264,6 @@ export function FormEgresado() {
     );
 
     //log de los datos sin enviar
-
-    console.log(formValues);
     store.setHasInfo(hasData);
   }, [formValues]);
 
